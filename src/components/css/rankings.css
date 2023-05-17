@@ -1,0 +1,50 @@
+.rankingsContainer{
+    padding-top: 4.3rem;
+    position: relative;
+}
+
+.rankingsDesc{
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.rankingsDesc p{
+    margin-top: 3vh;
+    width: 60%;
+}
+
+.rankingsDesc img{
+    margin: 8vh 0 2vh 0;
+    width: 40vw;
+}
+
+.rankContainer{
+    padding: 0 2vw ;
+    display: flex;
+}
+.rankCard{
+    width: 50%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.rankCard img{
+    height: 80%;
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+.rankCard p{
+    width: 100%;
+}
+
+
+@media only screen and  (max-width: 767px){
+    .rankContainer{
+        padding:0;
+        flex-direction: column;
+        align-items: center;
+    }
+}

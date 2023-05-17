@@ -1,0 +1,29 @@
+.contactContainer{
+    padding-top: 5rem;
+    text-align: center;
+    font-family: "Montserrat";
+}
+
+.contactContainer h1{
+    font-weight: bold;
+    margin-top: 10vh;
+}
+
+.contactContainer img{
+    margin-top: 3vh;
+    width: 70%;
+    height: 60vh;
+}
+
+.contactContainer h3{
+    font-family: "Open Sans";
+    font-size: large;
+    margin-bottom: 20vh;
+}
+
+.map{
+    margin-top: 5vh;
+    width: 70%;
+    height: 60vh;
+}
+

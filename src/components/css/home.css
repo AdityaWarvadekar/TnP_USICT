@@ -1,0 +1,278 @@
+*{
+    font-family: "Poppins";
+}
+
+.home{
+    /* background-color: #ffd460; */
+}
+
+.navHead{
+    font-size: 1.8vh;
+}
+
+.banner{
+    height: auto;
+    width: 100%;
+    margin-top: 4.5rem;
+    background:  url("../images/groupPhoto.png");  
+    background-size: cover;
+    text-align: center;
+    font-family: "Poppins";
+    font-weight: 800;
+    z-index: -1;
+}
+
+.banner .typeContainer{
+    padding: 30vh 0;
+    /* margin:  20vh 10vw; */
+}
+
+.typing {
+    font-size: 4vw;
+    color: #e2ddd4;
+    border-right: 3vh solid ;
+    white-space: nowrap;
+    overflow: hidden;
+    animation:
+        typewriter 4.5s steps(18, end),
+        blinker 0.7s step-end infinite;
+    
+    
+}
+
+
+
+
+.fadeIn{
+    animation: fadeIn ease-in 3s;
+    animation-fill-mode: forwards;
+}
+
+.fadeInLeft{
+    animation: fadeInLeft ease-in 2s;
+    animation-fill-mode: forwards;
+}
+
+.fadeInRight{
+    animation: fadeInRight ease-in 2s;
+    animation-fill-mode: forwards;
+}
+
+.fadeInTop{
+    animation: fadeInTop ease-in 2s;
+    animation-fill-mode: forwards;
+}
+
+
+.heading {
+    padding: 10vh 0 8vh 10vw;
+}
+
+.heading p{
+    overflow: hidden;
+   
+}
+
+.heading-text{
+    font-size: 2.5rem;
+    font-weight: bold;
+    color:rgb(36, 36, 36);
+}
+
+.short{
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #632626;
+}
+
+.reveal{
+    transform: translateY(50px);
+    transition: 1s all ease ;
+    opacity: 0;
+}
+
+
+.reveal.active{
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.description{
+    font-family: "Poppins";
+    color: grey;
+    font-size: 1.2rem;
+}
+
+.description p{
+    padding: 0 3vw;
+}
+
+.description .btn{
+    margin: 0 3vw;
+}
+
+.polygon1{
+    height: 20vh;
+    background-color: #f5ebdf;
+    clip-path:polygon(67% 35%, 0 100%, 100% 100%);
+}
+
+.productSlide{
+    background-color: #B3C890;
+    text-align: center;
+    /* clip-path: polygon(69% 0, 100% 17%, 100% 100%, 0 100%, 0 20%); */
+    clip-path: polygon(11% 0, 75% 3%, 100% 13%, 100% 70%, 100% 100%, 0 100%, 0% 70%, 0 13%);
+}
+
+.carouselCard{
+    background-color: "red";
+    height: 50vh;
+    width: auto;
+    /* margin: 0 3vw; */
+}
+
+.carouselCard p{
+    font-weight: 600;
+}
+
+.carouselImg{
+    /* padding-top: 3vh; */
+    position: relative;
+    width: 60%;
+    height:60%;
+    text-align: center;
+    border-radius: 150px;
+}
+
+.overlay{
+    /* display: none; */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20%;
+    right: 0;
+    height: 53%;
+    width: 60%;
+    opacity: 0;
+    background-color: black;
+    transition: 0.5s ease;
+    border-radius: 150px;
+}
+
+
+.overlay:hover{
+    opacity: 0.7;
+}
+
+.text{
+    color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+ 
+}
+
+.text p {
+    font-family: "Poppins";
+    font-weight: 200;
+}
+
+
+
+/*ANIMATIONS*/
+
+@keyframes typewriter{
+    from{width: 0}
+    to{width: 100%}
+}
+
+@keyframes blinker{
+    from, to{border-color: transparent;}
+    50%{border-color: rgb(36, 36, 36);}
+}
+
+/* .fadeInTop{
+    animation: fadeInTop 2s;
+}
+
+.fadeInBottom{
+    animation: fadeInBottom  2s;
+} */
+
+@keyframes fadeInTop {
+    0%{
+        transform: translateY(+2vh);
+        opacity: 0;
+       
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 100%;
+    }
+}
+
+@keyframes fadeInLeft {
+    0%{
+        transform: translateX(-10vw);
+        opacity: 0;
+       
+    }
+    100%{
+        transform: translateX(0);
+        opacity: 100%;
+    }
+}
+
+@keyframes fadeInRight {
+    0%{
+        transform: translateX(10vw);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0vw);
+        opacity: 100%;
+    }
+}
+
+@media only screen and  (max-width: 769px){
+
+    .headingContainer{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .heading-text{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .heading{
+        padding: 10vh 5vw;
+    }
+   .overlay{
+    height: 55%;
+   }
+
+   .productSlide{
+    clip-path: polygon(67% 9%, 100% 16%, 100% 100%, 0 100%, 0 17%);
+   }
+
+   /* .typeContainer{
+    margin: 0;
+   } */
+
+
+}
+
+@media only screen and (max-width: 375px){
+    .overlay{
+        height: 55%;
+    }
+
+
+}
