@@ -34,25 +34,25 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav" style={{marginLeft: "auto"}}>
               <li className="nav-item mx-3">
-                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="home" aria-current="page" to="/TnP_USICT/">
+                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="home" aria-current="page" to="/TnP_USICT">
                   Home
                 </NavLink>
               </li>
               <li className="nav-item mx-3">
-                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="about" to="/TnP_USICT/about">
+                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="about" to="/about">
                   About Us
                 </NavLink>
               </li>
               <li className="nav-item mx-3">
-                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="rankings" to="/TnP_USICT/rankings">
+                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="rankings" to="/rankings">
                   Rankings
                 </NavLink>
               </li>
               <li className="nav-item mx-3">
-                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle}  name="statistics" to="/TnP_USICT/statistics">Statistics</NavLink>
+                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle}  name="statistics" to="/statistics">Statistics</NavLink>
               </li>
               <li className="nav-item mx-3">
-                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="contact" to="/TnP_USICT/contact">
+                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="contact" to="/contact">
                   Contact
                 </NavLink>
               </li>

@@ -17,14 +17,14 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router basename="/TnP_USICT">
       <Header />
       <Routes>
-        <Route exact path='/TnP_USICT/' element={< Home />}></Route>
-        <Route exact path='/TnP_USICT/about' element={< About />}></Route>
-        <Route exact path='/TnP_USICT/statistics' element={< Statistics />}></Route>
-        <Route exact path='/TnP_USICT/rankings' element={< Rankings />}></Route>
-        <Route exact path='/TnP_USICT/contact' element={< Contact />}></Route>
+        <Route exact path='/TnP_USICT' element={< Home />}></Route>
+        <Route path='/about' element={< About />}></Route>
+        <Route path='/statistics' element={< Statistics />}></Route>
+        <Route path='/rankings' element={< Rankings />}></Route>
+        <Route path='/contact' element={< Contact />}></Route>
       </Routes>
       </Router>
     <Footer />
