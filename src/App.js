@@ -20,11 +20,11 @@ function App() {
       <Router basename="/TnP_USICT">
       <Header />
       <Routes>
-        <Route exact path='/TnP_USICT' element={< Home />}></Route>
-        <Route path='/about' element={< About />}></Route>
-        <Route path='/statistics' element={< Statistics />}></Route>
-        <Route path='/rankings' element={< Rankings />}></Route>
-        <Route path='/contact' element={< Contact />}></Route>
+        <Route exact path='/' element={< Home />}></Route>
+        <Route  path='/about' element={< About />}></Route>
+        <Route  path='/statistics' element={< Statistics />}></Route>
+        <Route  path='/rankings' element={< Rankings />}></Route>
+        <Route  path='/contact' element={< Contact />}></Route>
       </Routes>
       </Router>
     <Footer />
