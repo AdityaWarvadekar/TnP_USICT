@@ -20,11 +20,11 @@ function App() {
       <Router>
       <Header />
       <Routes>
-        <Route exact path='/' element={< Home />}></Route>
-        <Route exact path='/about' element={< About />}></Route>
-        <Route exact path='/statistics' element={< Statistics />}></Route>
-        <Route exact path='/rankings' element={< Rankings />}></Route>
-        <Route exact path='/contact' element={< Contact />}></Route>
+        <Route exact path='/TnP_USICT/' element={< Home />}></Route>
+        <Route exact path='/TnP_USICT/about' element={< About />}></Route>
+        <Route exact path='/TnP_USICT/statistics' element={< Statistics />}></Route>
+        <Route exact path='/TnP_USICT/rankings' element={< Rankings />}></Route>
+        <Route exact path='/TnP_USICT/contact' element={< Contact />}></Route>
       </Routes>
       </Router>
     <Footer />

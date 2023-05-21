@@ -44,22 +44,22 @@
 
 
 .fadeIn{
-    animation: fadeIn ease-in 3s;
+    animation: fadeIn ease-in 1s;
     animation-fill-mode: forwards;
 }
 
 .fadeInLeft{
-    animation: fadeInLeft ease-in 2s;
+    animation: fadeInLeft ease-in 1s;
     animation-fill-mode: forwards;
 }
 
 .fadeInRight{
-    animation: fadeInRight ease-in 2s;
+    animation: fadeInRight ease-in 1s;
     animation-fill-mode: forwards;
 }
 
 .fadeInTop{
-    animation: fadeInTop ease-in 2s;
+    animation: fadeInTop ease-in 1s;
     animation-fill-mode: forwards;
 }
 

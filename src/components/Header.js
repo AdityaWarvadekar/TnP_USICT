@@ -17,9 +17,9 @@ function Header() {
         className="navbar fixed-top navCustom navbar-dark navbar-expand-lg py-3"
       >
         <div className="container-fluid">
-          <a className="navbar-brand mx-3 w-50 navHead" href="/">
+          <div className="navbar-brand mx-3 w-50 navHead">
           <img src={require("./images/ggsipu.png")} style={{width: "8%", marginRight: "1vh"}} alt=""></img>Training and Placement Cell, USICT
-          </a>
+          </div>
           <button
             className="navbar-toggler"
             type="button"
@@ -34,25 +34,25 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav" style={{marginLeft: "auto"}}>
               <li className="nav-item mx-3">
-                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} aria-current="page" to="/">
+                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="home" aria-current="page" to="/TnP_USICT/">
                   Home
                 </NavLink>
               </li>
               <li className="nav-item mx-3">
-                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="about" to="/about">
+                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="about" to="/TnP_USICT/about">
                   About Us
                 </NavLink>
               </li>
               <li className="nav-item mx-3">
-                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="rankings" to="/rankings">
+                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="rankings" to="/TnP_USICT/rankings">
                   Rankings
                 </NavLink>
               </li>
               <li className="nav-item mx-3">
-                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle}  name="statistics" to="/statistics">Statistics</NavLink>
+                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle}  name="statistics" to="/TnP_USICT/statistics">Statistics</NavLink>
               </li>
               <li className="nav-item mx-3">
-                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="contact" to="/contact">
+                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="contact" to="/TnP_USICT/contact">
                   Contact
                 </NavLink>
               </li>

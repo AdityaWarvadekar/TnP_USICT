@@ -17,10 +17,10 @@ function Footer(){
             </div>
             <div className="usefulLinks d-flex flex-column">
                 <h5>USEFUL LINKS</h5>
-                <a href="/contact">Contact Us</a>
-                <a href="/statistics">Statistics</a>
-                <a href="/about">About Us</a>
-                <a href="/rankings">Rankings</a>
+                <a href="/TnP_USICT/contact">Contact Us</a>
+                <a href="/TnP_USICT/statistics">Statistics</a>
+                <a href="/TnP_USICT/about">About Us</a>
+                <a href="/TnP_USICT/rankings">Rankings</a>
             </div>
             <div className="usefulLinks">
                 <h5>TIMINGS:</h5>
