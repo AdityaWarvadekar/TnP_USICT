@@ -34,7 +34,7 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav" style={{marginLeft: "auto"}}>
               <li className="nav-item mx-3">
-                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="home" aria-current="page" to="/TnP_USICT">
+                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="home" aria-current="page" to="/">
                   Home
                 </NavLink>
               </li>
