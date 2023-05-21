@@ -98,7 +98,7 @@ function Home() {
             process. This includes team-building skills, audio presentations and
             personality development programs. 
           </p>
-          <a href="/about">
+          <a href="/TnP_USICT/about">
             <button className="btn btn-secondary">Read More</button>
           </a>
         </div>
