@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/TnP_USICT/static/css/main.e3dfceda.css",
-    "main.js": "/TnP_USICT/static/js/main.89976b58.js",
+    "main.css": "/TnP_USICT/static/css/main.d1d054fe.css",
+    "main.js": "/TnP_USICT/static/js/main.ba05796b.js",
     "static/media/report2022.pdf": "/TnP_USICT/static/media/report2022.14de0ff400fb9033ea63.pdf",
     "static/media/groupPhoto.png": "/TnP_USICT/static/media/groupPhoto.0240f60adb62c04bc387.png",
     "static/media/college.png": "/TnP_USICT/static/media/college.54d98bb590632f65bb0a.png",
@@ -21,11 +21,11 @@
     "static/media/revicons.ttf": "/TnP_USICT/static/media/revicons.57fd05d4ae650374c8de.ttf",
     "static/media/revicons.woff": "/TnP_USICT/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/TnP_USICT/index.html",
-    "main.e3dfceda.css.map": "/TnP_USICT/static/css/main.e3dfceda.css.map",
-    "main.89976b58.js.map": "/TnP_USICT/static/js/main.89976b58.js.map"
+    "main.d1d054fe.css.map": "/TnP_USICT/static/css/main.d1d054fe.css.map",
+    "main.ba05796b.js.map": "/TnP_USICT/static/js/main.ba05796b.js.map"
   },
   "entrypoints": [
-    "static/css/main.e3dfceda.css",
-    "static/js/main.89976b58.js"
+    "static/css/main.d1d054fe.css",
+    "static/js/main.ba05796b.js"
   ]
 }
