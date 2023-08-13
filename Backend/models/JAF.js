@@ -33,11 +33,11 @@ const JAFSchema = {
         type: String,
     },
     ctc: {
-        type: Number,
+        type: String,
         required: true
     },
     grossSalary: {
-        type: Number,
+        type: String,
         
     },
     bonus: {

@@ -194,7 +194,7 @@ router.get("/getCompanyDetails", fetchCompany, async(req, res)=>{
     try{
         let success = false;
         const userId = req.company.id;
-        console.log(userId);
+        // console.log(userId);
         const company = await Company.findById(userId).select("-password");
         if(!company)
             return res.status(400).json({success, error: "User does not exist"});
