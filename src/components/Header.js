@@ -56,6 +56,11 @@ function Header() {
                   Contact
                 </NavLink>
               </li>
+              <li className="nav-item mx-3">
+                <NavLink className={({isActive})=>isActive? activeStyle : inactiveStyle} name="login" to="/login">
+                  Login
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>

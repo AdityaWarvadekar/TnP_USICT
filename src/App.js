@@ -12,6 +12,7 @@ import Statistics from "./components/Statistics";
 import Rankings from "./components/Rankings";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import Login from "./components/login";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route  path='/statistics' element={< Statistics />}></Route>
         <Route  path='/rankings' element={< Rankings />}></Route>
         <Route  path='/contact' element={< Contact />}></Route>
+        <Route  path='/login' element={<Login />}></Route>
       </Routes>
       </Router>
     <Footer />

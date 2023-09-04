@@ -5,6 +5,10 @@ const JAFSchema = {
         type: mongoose.Schema.Types.ObjectId,      //using as a foreign key
         ref: 'company'
     },
+    orgName: {
+        type: String, 
+        required: true
+    },
     entryTime: {
         type: Date,
         required: true

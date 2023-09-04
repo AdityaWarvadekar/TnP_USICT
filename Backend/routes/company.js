@@ -32,7 +32,7 @@ router.post("/scheduleDrive", fetchCompany, [
     try{
         let success = false;
         const companyID = req.company.id;
-        const company = await Company.findById(companyID);
+        const company = await Company.findById(companyID).select("-password");
         if(!company)
             return res.status(400).json({success, error: "company not found!"});
         // res.send(company);
@@ -43,6 +43,7 @@ router.post("/scheduleDrive", fetchCompany, [
         const drive = await JAF.create(
             {
                 company: company,
+                orgName: company.orgName,
                 entryTime: Date.now(),
                 brief: brief,
                 jobDesignation: jobDesignation,
@@ -68,6 +69,15 @@ router.post("/scheduleDrive", fetchCompany, [
     }
 }
 );
+
+router.get("/viewScheduledDrives", fetchCompany, async (req, res)=>{
+    const companyID = req.company.id;
+    // res.send(companyID);
+    const drive = await JAF.findOne({company: companyID});
+    if(!drive)
+        return res.status(400).json({error: "no drive found"});
+    res.send(drive);
+});
 
 
 module.exports = router;
