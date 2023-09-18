@@ -1,7 +1,8 @@
 import React from "react";
 import "./css/about.css";
-
+import GoToTop from "./GoToTop";
 function About() {
+  GoToTop();
   return (
     <>
       <div className="aboutContainer d-flex flex-column">

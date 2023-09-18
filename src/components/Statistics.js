@@ -1,7 +1,8 @@
 import React from "react";
 import "./css/statistics.css";
-
+import GoToTop from "./GoToTop";
 function Statistics() {
+  GoToTop();
   return (
     <div className="productsSection">
       <div className="productBrief d-flex flex-column align-items-center fade-in">

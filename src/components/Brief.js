@@ -1,7 +1,8 @@
 import React from "react";
 import "./css/brief.css";
-
+import GoToTop from "./GoToTop";
 function Brief() {
+  GoToTop();
   return (
     <>
       <div className="briefContainer">

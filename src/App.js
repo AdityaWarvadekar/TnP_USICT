@@ -12,13 +12,15 @@ import Statistics from "./components/Statistics";
 import Rankings from "./components/Rankings";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import Login from "./components/login";
-
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import AuthState from "./context/auth/AuthState";
 
 function App() {
   return (
     <div className="App">
       <Router basename="/TnP_USICT">
+      <AuthState>
       <Header />
       <Routes>
         <Route exact path='/' element={< Home />}></Route>
@@ -27,7 +29,9 @@ function App() {
         <Route  path='/rankings' element={< Rankings />}></Route>
         <Route  path='/contact' element={< Contact />}></Route>
         <Route  path='/login' element={<Login />}></Route>
+        <Route  path='/signup' element={<Signup />}></Route>
       </Routes>
+      </AuthState>
       </Router>
     <Footer />
     

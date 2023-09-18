@@ -12,20 +12,21 @@ const fetchCompany = require("../middleware/fetchCompany");
 
 //STUDENT REGISTRATION
 router.post("/createStudent", [
-    body("enrollment", "Invalid Enrollment Number entered").isNumeric().isLength(10),
+    body("enrollment", "Invalid Enrollment Number entered").isNumeric().isLength({min: 11, max: 11}),
     body("name", "No Value Entered").exists(),
     body("email", "Enter valid Email").isEmail(),
-    body("course", "Invalid Value Entered").isAlphanumeric(),
-    body("branch", "Invalid Value Entered").isAlpha(),
+    body("course", "Invalid Value Entered").isIn(['B.Tech', 'M.Tech', 'MCA']),
+    // body("branch", "Invalid Value Entered").isAlpha(),
+    body("branch", "Invalid Value Entered").isIn(['CSE', 'IT', 'ECE', 'RnA', 'SE']),
     body("yop", "Invalid Value Entered").isNumeric(),
-    body("password", "No Value Entered").exists(),
+    body("password", "Minimum length should be 6 and maximum should be 20!").isLength({min: 6, max: 20}),
 ], async(req,res)=>{
     let success = false;
     const errors = validationResult(req);
     if(!errors.isEmpty()){
        return res.status(400).json({success, errors: errors.array()});
     }
-
+    console.log(errors.errors);
     try{
         let student = await Student.findOne({enrollment: req.body.enrollment});
         if(student)
@@ -56,8 +57,8 @@ router.post("/createStudent", [
 
     }
     catch(error){
-        console.log(error.message);
-        res.status(500).json({success, error: "Internal Server Error"});
+        console.log(error.message); 
+        res.status(500).json({success, error: error.message});
         // res.status(500).json({error: "Internal Server error"});
     }
 }
@@ -71,9 +72,9 @@ router.post("/createStudent", [
         body("location", "Enter valid Location").exists(),
         body("pocName", "Enter valid Name").exists(),
         body("pocDesignation", "Enter valid Designation").exists(),
-        body("contact", "Enter valid contact").isNumeric().isLength(10),
+        body("contact", "Enter valid contact").isNumeric().isLength({max:10, min:10}),
         body("email", "Enter valid email").isEmail(),
-        body("password", "Password can't be empty!").exists(),
+        body("password", "Minimum length should be 6 and maximum should be 20!").isLength({min:6, max: 20}),
     ], async(req, res)=>{
         const errors = validationResult(req);
         let success = false;
@@ -110,13 +111,13 @@ router.post("/createStudent", [
 
         }catch(error){
             console.log(error);
-            // return res.status(500).json({success, error: "Internal Server Error"});
+            return res.status(500).json({success, error: error.message});
         }
     }
     );
 
 //LOGIN SECTION
-    router.get("/login",
+    router.post("/login",
     [
         body("email", "Enter valid email").isEmail(),
         body("password", "Password can't be empty!").exists(),
@@ -181,10 +182,10 @@ router.get("/getStudentDetails", fetchStudent, async(req, res)=>{
         const student = await Student.findById(userId).select("-password");
         if(!student)
                 return res.status(400).json({success, error: "User does not exist"});
-        res.send(student);
+        res.send({success: true, student});
     }catch(error){
         console.log(error);
-        return res.status(500).json({error: "Internal Server Error"});
+        return res.status(500).json({success: false, error: "Internal Server Error"});
     }
 });
 
@@ -198,10 +199,10 @@ router.get("/getCompanyDetails", fetchCompany, async(req, res)=>{
         const company = await Company.findById(userId).select("-password");
         if(!company)
             return res.status(400).json({success, error: "User does not exist"});
-        res.send(company);
+        res.send({success: true, company});
     }catch(error){
         console.log(error);
-        return res.status(500).json({error: "Internal Server Error"});
+        return res.status(500).json({success: false, error: "Internal Server Error"});
     }
 });
 

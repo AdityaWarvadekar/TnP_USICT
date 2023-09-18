@@ -1,7 +1,9 @@
 import React from "react";
 import "./css/rankings.css";
+import GoToTop from "./GoToTop";
 
 function Rankings() {
+  GoToTop();
   return (
     <div className="rankingsContainer">
       <div className="rankingsDesc fade-in">

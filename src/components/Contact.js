@@ -1,10 +1,11 @@
 import React from "react";
 import ContactDetails from "./ContactDetails";
 import "./css/contact.css";
-
+import GoToTop from "./GoToTop";
 //EMBEDDED MAP FROM maps.google.com
 
 function Contact() {
+  GoToTop();
   return (
     <>
       <div className="contactContainer">
