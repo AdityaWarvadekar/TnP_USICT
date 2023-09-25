@@ -146,7 +146,7 @@ router.post("/createStudent", [
                         }
                     };
                     const authToken = jwt.sign(data, JWT_SECRET);
-                    res.json({success: true, authToken});
+                    res.json({success: true, authToken, type: "company"});
                 }
             }
             else{
@@ -159,7 +159,7 @@ router.post("/createStudent", [
                     }
                 };
                 const authToken = jwt.sign(data, JWT_SECRET);
-                res.json({success: true, authToken});
+                res.json({success: true, authToken, type: "student"});
             }
             
             
@@ -178,7 +178,7 @@ router.get("/getStudentDetails", fetchStudent, async(req, res)=>{
     try{
         let success = false;
         const userId = req.student.id;
-        console.log(userId);
+        // console.log(userId);
         const student = await Student.findById(userId).select("-password");
         if(!student)
                 return res.status(400).json({success, error: "User does not exist"});

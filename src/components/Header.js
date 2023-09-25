@@ -17,8 +17,10 @@ function Header() {
     let session = sessionStorage.getItem("register");
     if (session == null) {
       dispatch({ type: "USER", payload: false });     //we set payload false, so it will return false (as defined in reducer fnx)
-      console.log("state now: "+ state);
+      // console.log("state now: "+ state);
       localStorage.removeItem("session");
+      localStorage.removeItem("token");
+      localStorage.removeItem("loginType");
     }
     sessionStorage.setItem("register", 1);
   };
@@ -26,7 +28,7 @@ function Header() {
   window.addEventListener("load", clearStorage);
 
   const loginDashboard = () => {
-    if (state) {
+    if (localStorage.getItem("session")==="true") {
       return (
         <NavLink
           className={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}

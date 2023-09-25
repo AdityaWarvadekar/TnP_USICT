@@ -1,0 +1,81 @@
+.dashboardContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 110vh;
+    /* padding: 0 5vw; */
+    width: 23%;
+    background-color: whitesmoke;
+    box-shadow: 0 -5px 10px;
+    padding: 30vh 0;
+}
+
+.dashboardContainer  ul{
+    text-decoration: none;
+    color: black;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    /* position: fixed; */
+}
+
+
+.dashboardElements button{
+    width: 15vw;
+    padding: 2vh 3vw;
+    margin-top: 5vh;
+    border-radius: 15px;
+    background-color: #025464;
+    color: white;
+    font-family: "Poppins";
+    border: none;
+}
+
+.dashboardDisplay{
+    width: 77%;
+    /* display: inline-flex; */
+    padding: 20vh 2vw;
+    /* background-color: antiquewhite; */
+    overflow-y: scroll;
+    height: 110vh;
+}
+.displayContainer{
+    height: 40vh;
+    overflow: scroll;
+    border-radius: 20px;
+    background-color: white;
+    /* box-shadow: 0 0 2px inset; */
+    margin-top: 3vh;
+    border: 1px solid grey;
+}
+
+
+
+/* DRIVES SECTION */
+
+.driveCard{
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    margin: 1.5vh 2vw;
+    padding: 3vh;
+    border-radius: 20px;
+    box-shadow: 0 1px 3px;
+}
+
+
+/* PROFILES SECTION */
+
+.profileContainer{
+    display: flex;
+    /* flex-direction: column; */
+    background-color: white;
+    height: 30vh;
+    border-radius: 20px;
+    box-shadow: 0 0 2px inset;
+}
+
+.profileContainer p{
+    font-weight: 400;
+}

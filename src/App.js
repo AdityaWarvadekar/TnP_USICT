@@ -15,12 +15,15 @@ import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import AuthState from "./context/auth/AuthState";
+import UserDashboard from "./components/UserDashboard";
+import UserState from "./context/user/UserState";
 
 function App() {
   return (
     <div className="App">
       <Router basename="/TnP_USICT">
       <AuthState>
+      <UserState>
       <Header />
       <Routes>
         <Route exact path='/' element={< Home />}></Route>
@@ -30,7 +33,9 @@ function App() {
         <Route  path='/contact' element={< Contact />}></Route>
         <Route  path='/login' element={<Login />}></Route>
         <Route  path='/signup' element={<Signup />}></Route>
+        <Route  path='/userDashboard' element={<UserDashboard />}></Route>
       </Routes>
+      </UserState>
       </AuthState>
       </Router>
     <Footer />

@@ -8,7 +8,7 @@ function Login(props) {
     const host = "http://localhost:5000"; //backend
     const navigate = useNavigate();
 
-    const {state, dispatch} = useContext(authContext);
+    const {dispatch} = useContext(authContext);
 
     const onChange = (e)=>{
         setCredentials({...credentials, [e.target.name]: e.target.value});
@@ -28,8 +28,10 @@ function Login(props) {
         console.log(json);
         if(json.success){
           alert("Logged In Successfully");
+          localStorage.setItem("token", json.authToken);
+          localStorage.setItem("loginType", json.type);
           dispatch({type: "USER", payload: true});
-          navigate("/");
+          navigate("/userDashboard");
         }
         else alert("INVALID");
     }

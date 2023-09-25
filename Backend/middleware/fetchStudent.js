@@ -9,7 +9,7 @@ const fetchStudent = (req, res, next)=>{
     try{
         const data = jwt.verify(token, JWT_SECRET);
         req.student = data.student;
-        // console.log(data.student);
+        console.log(data.student);
         next();
     }catch(error){
         console.log(error);
