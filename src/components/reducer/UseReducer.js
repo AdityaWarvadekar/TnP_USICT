@@ -9,5 +9,9 @@ export const reducer = (state, action)=>{ //must be a pure function. Returns sam
         localStorage.setItem("session", JSON.stringify(action.payload));
         return action.payload;                     // suitable operation for it 
     }
+    if(action.type==="DRIVES") 
+        return action.payload;
+    if(action.type==="PROFILE")
+        return action.payload;
     return state;
 }
