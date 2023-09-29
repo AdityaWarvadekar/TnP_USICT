@@ -26,11 +26,11 @@ const UserDashboard = () => {
     if (displayState === "PROFILE")
       return (
         <>
-          <h4 className="my-4">Your Profile: </h4>
+          <h4 className="my-4">Your Profile: <span><button className="btn btn-success mx-3"><i class="fa-solid fa-pen-to-square"></i></button></span></h4>
           <Profile />
         </>
       );
-    else return <Drives />;
+    else return <><h4 className="my-4">Your Drives: </h4><Drives /></>;
   };
 
   const activeStyle = "navLink active ";

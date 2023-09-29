@@ -41,11 +41,11 @@
     height: 110vh;
 }
 .displayContainer{
-    height: 40vh;
+    height: 60vh;
     overflow: scroll;
     border-radius: 20px;
     background-color: white;
-    /* box-shadow: 0 0 2px inset; */
+    box-shadow: 0 0 2px inset;
     border: 1px solid grey;
 }
 
@@ -64,6 +64,12 @@
 }
 
 
+.driveCard h6{
+    font-weight: 400;
+    font-size: 3vmin;
+}
+
+
 /* PROFILES SECTION */
 
 .profileContainer{
@@ -75,6 +81,11 @@
     box-shadow: 0 0 2px inset;
 }
 
-.profileContainer p{
+.profileContainer h6{
     font-weight: 400;
+    font-size: 2.5vmin;
+}
+
+.head h6 {
+    font-weight: 500;
 }
