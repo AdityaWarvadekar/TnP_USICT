@@ -7,8 +7,11 @@ import authContext from "../context/auth/authContext";
 import Profile from "./Profile";
 
 const UserDashboard = () => {
+  
   const { user, getUser } = useContext(userContext);
   const navigate = useNavigate();
+  if(localStorage.getItem("session")==="false")
+    navigate("/login");
   const loginType = localStorage.getItem("loginType");
   useEffect(() => {
     getUser();
@@ -26,7 +29,7 @@ const UserDashboard = () => {
     if (displayState === "PROFILE")
       return (
         <>
-          <h4 className="my-4">Your Profile: <span><button className="btn btn-success mx-3"><i class="fa-solid fa-pen-to-square"></i></button></span></h4>
+          
           <Profile />
         </>
       );

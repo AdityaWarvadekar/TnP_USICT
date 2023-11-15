@@ -185,40 +185,58 @@ function Signup() {
               </div>
               <div className="form-group my-3">
                 <label htmlFor="courseEntry">Course</label>
-                <input
+                <select
                   type="text"
                   className="form-control my-3 "
                   id="courseEntry"
                   placeholder="BTech/MTech/MCA"
                   name="course"
-                  value={studentCredentials.course}
+                  // value={studentCredentials.course}
                   onChange={onChangeStudent}
-                />
+                >
+                  <option value="--SELECT--" selected>--SELECT--</option>
+                  <option value="B.Tech">B.Tech</option>
+                  <option value="M.Tech">M.Tech</option>
+                  <option value="MCA">MCA</option>
+                </select>
               </div>
               <div className="form-group my-3">
                 <label htmlFor="branchEntry">Branch</label>
-                <input
+                <select
                   type="text"
                   className="form-control my-3 "
                   id="branchEntry"
                   placeholder="CSE/ECE/IT/SE/RnA"
                   name="branch"
-                  value={studentCredentials.branch}
+                  // value={studentCredentials.branch}
                   onChange={onChangeStudent}
-                />
+                >
+                  <option value="--SELECT--" selected>--SELECT--</option>
+                  <option value="CSE">CSE</option>
+                  <option value="IT">IT</option>
+                  <option value="ECE">ECE</option>
+                  <option value="SE">SE</option>
+                  <option value="RnA">RnA</option>
+                </select>
               </div>
 
               <div className="form-group my-3">
                 <label htmlFor="yopEntry">Year Of Passing</label>
-                <input
+                <select
                   type="number"
                   className="form-control my-3 "
                   id="yopEntry"
                   placeholder="Eg:2025"
                   name="yop"
-                  value={studentCredentials.yop}
+                  // value={studentCredentials.yop}
                   onChange={onChangeStudent}
-                />
+                >
+                  <option value="--SELECT--" selected>--SELECT--</option>
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
+                </select>
               </div>
             </div>
             {/* END LEFT SIDE */}

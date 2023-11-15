@@ -19,11 +19,12 @@ router.get("/scheduledDrives", async (req, res) => {
 router.post(
   "/addAcademicDetails",
   fetchStudent,
-  [ body("gender", "enter valid gender").isIn(["M", "F"]),
-    body("percentage10", "Invalid Value").isFloat({min: 0, max:100}),
-    body("percentage12", "Invalid Value").isFloat({min: 0, max:100}),
-    body("gradCGPA", "InvalidValue").isFloat({min: 0, max:10}),
-    body("resume", "Invalid Value").exists()
+  [ 
+    body("percentage10", "Enter valid 10th Percentage").isFloat({min: 0, max:100}),
+    body("percentage12", "Enter valid 12th Percentage").isFloat({min: 0, max:100}),
+    body("gradCGPA", "Invalid Graduation CGPA").isFloat({min: 0, max:10}),
+    body("resume", "Invalid Resume Link").exists(),
+    body("gender", "Enter valid gender (M/F)").isIn(["M", "F"])
 ],
   async (req, res) => {
     let success=false;
