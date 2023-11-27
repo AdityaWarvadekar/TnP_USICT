@@ -61,19 +61,19 @@ const JAFSchema = {
         required: true
     },
     course: {
-        type: String,
+        type: [String],
         required:true
     },
     stream: {
-        type: String,
+        type: [String],
         required:true
     },
     batch: {
-        type: String,
+        type: [String],
         required:true
     },
     driveDate: {
-        type: String,
+        type: Date,
         required:true
     },
     mode: {

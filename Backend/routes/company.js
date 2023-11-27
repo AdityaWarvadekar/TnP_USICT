@@ -6,6 +6,7 @@ const Company = require("../models/Company");
 const JAF = require("../models/JAF");
 const router = express.Router();
 
+
 router.post("/scheduleDrive", fetchCompany, [
     body("brief", "Cannot be empty!").exists(),
     body("jobDesignation", "Cannot be empty!").exists(),
@@ -19,9 +20,9 @@ router.post("/scheduleDrive", fetchCompany, [
     body("bond", "Cannot be empty!").exists(),
     body("numberOfRounds", "Cannot be empty!").isNumeric(),
     body("roundDescription", "Cannot be empty!").exists(),
-    body("course", "Cannot be empty!").exists(),
-    body("stream", "Cannot be empty!").exists(),
-    body("batch", "Cannot be empty!").exists(),
+    body("course", "Cannot be empty!").isArray(),
+    body("stream", "Cannot be empty!").isArray(),
+    body("batch", "Cannot be empty!").isArray(),
     body("driveDate", "Cannot be empty!").isDate(),
     body("mode", "Cannot be empty!").exists(),
 ], 
@@ -106,19 +107,19 @@ module.exports = router;
 
 
 // {
-//     "brief": "Largest IT Company",
-//     "jobDesignation": "SDE",
-//     "jobDescription": "Develop",
-//     "jobLocation": "Gurgaon",
-//     "joiningDate": "22-06-2025",
-//     "otherDocument": "none",
-//     "ctc": "45LPA",
-//     "bond": "0",
-//     "numberOfRounds": 4,
-//     "roundDescription": "1. CODING ROUND and 2 INTERVIEWS and rest HR ROUNDS",
-//     "course": "B.Tech, M.Tech, MCA",
-//     "stream": "CSE",
-//     "batch": "2025",
-//     "driveDate": "15-05-2025",
-//     "mode": "Hybrid"
+    // "brief": "Largest IT Company",
+    // "jobDesignation": "SDE",
+    // "jobDescription": "Develop",
+    // "jobLocation": "Gurgaon",
+    // "joiningDate": "22-06-2025",
+    // "otherDocument": "none",
+    // "ctc": "45LPA",
+    // "bond": "0",
+    // "numberOfRounds": 4,
+    // "roundDescription": "1. CODING ROUND and 2 INTERVIEWS and rest HR ROUNDS",
+    // "course": "B.Tech, M.Tech, MCA",
+    // "stream": "CSE",
+    // "batch": "2025",
+    // "driveDate": "15-05-2025",
+    // "mode": "Hybrid"
 //   }

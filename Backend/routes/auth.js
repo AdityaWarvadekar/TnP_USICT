@@ -155,7 +155,7 @@ router.post("/login",
                     return res.status(400).json({ success, errors: "Invalid Credentials" });
                 const data = {
                     student: {
-                        id: student.id
+                        id: student.id        //UNIQUE ATTRIBUTE NEEDED TO ENCRYPT 
                     }
                 };
                 const authToken = jwt.sign(data, JWT_SECRET);
@@ -225,6 +225,26 @@ router.post("/updateStudentDetails", [body("email", "Enter a valid email!").isEm
         return res.status(500).json({ success: false, error: "Internal Server Error" });
     }
 })
+
+router.post("/updateCompanyDetails", [body("email", "Enter a valid email!").isEmail(), body("password", "Password can't be empty!").exists()], fetchCompany, async (req, res) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty())   
+        return res.status(400).json({sucess: false, errors: errors.array()});
+    try{
+        const userId = req.company.id;
+        const {email, password} = req.body;
+        const company = await Company.findById(userId);
+        const passwordCompare = bcrypt.compare(password, company.password);
+        if(!passwordCompare)
+            return res.status(500).json({success: false, error:"Invalid Password"});
+        const update = await Company.findByIdAndUpdate(userId, {email: email});
+        res.json({success: true});
+    }catch(error){
+        console.log(error);
+        return res.status(500).json({sucess: false, error: "Internal Server  ccdError"});
+    }
+}
+    )
 
 
 module.exports = router;

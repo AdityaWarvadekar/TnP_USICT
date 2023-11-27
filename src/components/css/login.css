@@ -55,6 +55,17 @@
     padding: 5vh;
 }
 
+.formBox{
+    /* padding-top: 20vh; */
+    background-color: white;
+    margin: 7vmin 0;
+    padding: 5vmin;
+    /* border: 1px solid; */
+    border-radius: 5px;
+    box-shadow: 0 0 3px;
+}
+
+
 @media only screen and (max-width: 768px) {
     .studentForm {
       flex-direction: column;

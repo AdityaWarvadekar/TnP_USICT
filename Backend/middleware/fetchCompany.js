@@ -10,7 +10,7 @@ const fetchCompany = (req, res, next)=>{
     }
     try{
         const data = jwt.verify(token, JWT_SECRET);
-        req.company = data.company;
+        req.company = data.company; //APPENDING THE COMPANY OBJECT IN REQUEST
         // console.log(data.student);
         next();
     }catch(error){

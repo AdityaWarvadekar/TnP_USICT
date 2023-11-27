@@ -1,9 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import userContext from "../context/user/userContext";
+import ScheduleDrive from "./ScheduleDrive";
+import { useNavigate } from "react-router-dom";
+
+
 
 const Drives = () => {
   const loginType = localStorage.getItem("loginType");
   const host = "http://localhost:5000";
+  const navigate = useNavigate();
   const url =
     loginType === "student"
       ? "/api/student/scheduledDrives"
@@ -26,7 +31,8 @@ const Drives = () => {
         // console.log(drives);
       } else {
         // console.log("json");
-        // console.log(json);
+        console.log(json);
+        console.log("inside /getDrives");
         setDrives(json);
         // console.log(drives);
       }
@@ -40,7 +46,7 @@ const Drives = () => {
       return (
         <div className="my-5 py-5 d-flex flex-column align-items-center">
           <h4>{drives.error}</h4>
-          <button className="btn btn-success my-3">Schedule a Drive</button>
+          <button className="btn btn-success my-3" onClick={()=>{navigate("/scheduleDrive")}}>Schedule a Drive</button>
         </div>
       );
     else if (loginType === "student")

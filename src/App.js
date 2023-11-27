@@ -17,6 +17,7 @@ import Signup from "./components/Signup";
 import AuthState from "./context/auth/AuthState";
 import UserDashboard from "./components/UserDashboard";
 import UserState from "./context/user/UserState";
+import ScheduleDrive from "./components/ScheduleDrive";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route  path='/login' element={<Login />}></Route>
         <Route  path='/signup' element={<Signup />}></Route>
         <Route  path='/userDashboard' element={<UserDashboard />}></Route>
+        <Route  path='/scheduleDrive' element={<ScheduleDrive />}></Route>
       </Routes>
       </UserState>
       </AuthState>

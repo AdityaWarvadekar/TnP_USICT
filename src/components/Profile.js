@@ -120,6 +120,7 @@ const Profile = () => {
     console.log(json);
     if (json.success){
       console.log("SUCCSSSSEEE");
+      alert("Update Sucessful");
       navigate("/userDashboard");
       close.current.click();
     }
@@ -320,6 +321,7 @@ const Profile = () => {
 
     else if (profile && loginType === "company") {
       return (
+        <><h4 className="my-4">Your Profile: <span><button className="btn btn-success mx-3" onClick={() => { console.log("AAUUUUU"); profileRef.current.click(); }}><i class="fa-solid fa-pen-to-square"></i></button></span></h4>
         <div className="profileContainer">
           <div className="d-flex justify-content-between align-items-center w-100 p-5">
             <div className="d-flex w-50 justify-content-evenly px-5">
@@ -351,6 +353,8 @@ const Profile = () => {
 
           </div>
         </div>
+        {profileModal()}
+        </>
       );
     }
 

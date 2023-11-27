@@ -11,9 +11,22 @@ const Student = require("../models/Student");
 const { StrictMode } = require("react");
 const router = express.Router();
 
-router.get("/scheduledDrives", async (req, res) => {
-  const drives = await JAF.find({}, { _id: 0 });
-  res.send(drives);
+router.get("/scheduledDrives", fetchStudent, async (req, res) => {
+  try{
+    console.log("DRIVES SCHEDULED: ");
+    const userId = req.student.id;
+    const student = await Student.findById(userId);
+    // let studentBatch = student.yop;
+    // studentBatch.toString(10);
+    let abc = "abc";
+    console.log(abc);
+    const drives = await JAF.find({batch: student.yop}, { _id: 0 });
+    console.log(drives);
+    res.send(drives);
+  }
+  catch(error){
+    res.status(400).send("Internal Server Erropr!");
+  }
 });
 
 router.post(

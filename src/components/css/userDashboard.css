@@ -37,7 +37,7 @@
     /* display: inline-flex; */
     padding: 20vh 2vw;
     /* background-color: antiquewhite; */
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     height: 110vh;
 }
 .displayContainer{
@@ -47,6 +47,7 @@
     background-color: white;
     box-shadow: 0 0 2px inset;
     border: 1px solid grey;
+    overflow-y: scroll;
 }
 
 
