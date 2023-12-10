@@ -7,11 +7,10 @@ import authContext from "../context/auth/authContext";
 import Profile from "./Profile";
 
 const UserDashboard = () => {
-  
   const { user, getUser } = useContext(userContext);
   const navigate = useNavigate();
-  if(localStorage.getItem("session")==="false")
-    navigate("/login");
+  
+    
   const loginType = localStorage.getItem("loginType");
   useEffect(() => {
     getUser();
@@ -29,15 +28,12 @@ const UserDashboard = () => {
     if (displayState === "PROFILE")
       return (
         <>
-          
           <Profile />
         </>
       );
     else return <><h4 className="my-4">Your Drives: </h4><Drives /></>;
   };
 
-  const activeStyle = "navLink active ";
-  const inactiveStyle = "navLink underEffect";
 
   return (
     <>

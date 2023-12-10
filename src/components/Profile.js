@@ -12,7 +12,7 @@ const Profile = () => {
 
   const navigate = useNavigate();
 
-  const [profile, setProfile] = useState([]);
+  const [profile, setProfile] = useState(null);
   const [pword, setPword] = useState("");
   const [acadDetails, setAcadDetails] = useState({ percentage10: "", percentage12: "", gradCGPA: "", gender: "", resume: "" });
 
