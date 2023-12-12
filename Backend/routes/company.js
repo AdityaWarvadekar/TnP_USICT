@@ -6,13 +6,15 @@ const Company = require("../models/Company");
 const JAF = require("../models/JAF");
 const router = express.Router();
 
+const { getObjectUrl, generatePutObjectUrl} = require("./uploads.js");
+
 
 router.post("/scheduleDrive", fetchCompany, [
     body("brief", "Cannot be empty!").exists(),
     body("jobDesignation", "Cannot be empty!").exists(),
     body("jobDescription", "Cannot be empty!").exists(),
     body("jobLocation", "Cannot be empty!").exists(),
-    body("joiningDate", "Cannot be empty!").isDate(),
+    body("joiningDate", "Cannot be empty!").exists(),
     body("otherDocument", "Cannot be empty!"),
     body("ctc", "Cannot be empty!").exists(),
     body("grossSalary", "Cannot be empty!"),
@@ -23,7 +25,7 @@ router.post("/scheduleDrive", fetchCompany, [
     body("course", "Cannot be empty!").isArray(),
     body("stream", "Cannot be empty!").isArray(),
     body("batch", "Cannot be empty!").isArray(),
-    body("driveDate", "Cannot be empty!").isDate(),
+    body("driveDate", "Cannot be empty!").exists(),
     body("mode", "Cannot be empty!").exists(),
 ], 
   async(req, res)=>{
@@ -40,7 +42,13 @@ router.post("/scheduleDrive", fetchCompany, [
         if(company.drivesScheduled!==0){
             return res.status(400).json({success, error: "One drive already Scheduled!"});
         }
-        const {brief, jobDesignation, jobDescription, jobLocation, joiningDate, otherDocument, ctc, grossSalary, bonus, bond, numberOfRounds, roundDescription, course, stream, batch, driveDate, mode} = req.body;
+        const {brief, jobDesignation, jobDescription, jobLocation, joiningDate, otherDocument, ctc, bond, numberOfRounds, roundDescription, course, stream, batch, driveDate, mode} = req.body;
+        /////////////////////////////////////////////////
+
+        
+
+
+        //GET PATH FROM S3 AND THEN PUT IT IN OTHER DOCUMENT SECTION
         const drive = await JAF.create(
             {
                 company: company,
@@ -63,13 +71,54 @@ router.post("/scheduleDrive", fetchCompany, [
                 mode: mode
               });
         await company.updateOne({"drivesScheduled": 1});
-        res.send(company);
+        res.send({success: true, company});
     }catch(error){
         console.log(error);
         res.status(500).json("Internal Server Error");
     }
 }
 );
+
+// router.post("/uploadObjecttoS3", [
+//     body("file", "Cannot be empty!").exists()], async(req, res)=>{
+//         const errors = validationResult(req);
+//         if(!errors.isEmpty())
+//             return res.status(400).json({success: false, errors: errors.array()});
+//         try{
+//             const url = req.header("url");
+//             const response = await 
+//         }catch(error){
+//             console.log(error);
+//             res.status(500).json("Internal Server Error");
+//         }
+
+// });
+
+router.get("/getPutObjectUrl", async(req, res)=>{
+    const filePath = req.header("filePath");
+    const contentType = req.header("contentType");
+    console.log("FilePath: ", filePath, contentType);
+    try{
+    const url = await generatePutObjectUrl(filePath, contentType);
+    res.status(200).json({success: true, url: url});
+    }catch(e){
+        res.status(500).json({sucess: false, error: "AWS Error"});
+    }
+});
+
+router.get("/getObjectUrl", async(req, res)=>{
+    const path = req.header("filePath");
+    try{
+        const url = await getObjectUrl(path);
+        res.status(200).json({success: true, url: url});
+    }catch(e){
+        res.status(500).json({success: false, error: "AWS Error"});
+    }
+})
+
+// router.post("/uploadFile", async(req, res)=>{
+    
+// })
 
 router.get("/viewScheduledDrives", fetchCompany, async (req, res)=>{
     const companyID = req.company.id;
