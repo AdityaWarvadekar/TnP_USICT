@@ -42,8 +42,17 @@ const UserState = (props) => {
     // console.log("user: "+user.pocName);
   };
 
+  const authorizeCompany = ()=>{
+    let session = localStorage.getItem("session");
+    let loginType = localStorage.getItem("loginType")
+    if(!(session && loginType==="company")){
+      localStorage.clear();
+      navigate("/login");
+    }
+  }
+
   return (
-    <userContext.Provider value={{ user, getUser }}>
+    <userContext.Provider value={{ user, getUser, authorizeCompany }}>
       {props.children}
     </userContext.Provider>
   );

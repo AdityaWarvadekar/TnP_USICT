@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useAsyncError, useNavigate } from 'react-router-dom'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import "./css/login.css";
 
 import DatePicker from "react-datepicker";
 // import DatePicker from 'react-datepicker/dist/react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import userContext from '../context/user/userContext';
 
 
 const ScheduleDrive = () => {
@@ -12,9 +13,13 @@ const ScheduleDrive = () => {
     const navigate = useNavigate();
     const loginType = localStorage.getItem("loginType");
     const session = localStorage.getItem("session");
-    if (session === "true" && loginType !== "company")
-        navigate("/");
+    
+    const { authorizeCompany } = useContext(userContext);
 
+    useEffect(()=>{
+        authorizeCompany();
+    }, [])
+    
     //GETTING THE COMPANY INFO FOR FILE NAME
 
     const [credentials, setCredentials] = useState(null);

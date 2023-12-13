@@ -17,3 +17,51 @@ https://fullstackdojo.medium.com/s3-upload-with-presigned-url-react-and-nodejs-b
 
 THE URL AND FILEPATH ETC. ARE NOT UPDATED !!!!!!!!!! 
 AFTER SOLVING THEN MAKE PUTREQUEST
+
+
+SEPARATE THE COMPANY AND STUDENT DRIVES SECTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+view details showing only first company
+OR do something for the ref and modal
+
+
+
+
+
+
+
+
+
+
+        <div className="driveCard">
+              <div className="d-flex justify-content-between align-items-center px-3">
+                <h4>{e.orgName} Recruitment Drive: </h4>
+                <h5>{e.driveDate.slice(0, 10)}</h5>
+              </div>
+              <div className="d-flex justify-content-between align-items-center p-3">
+                <div className="d-flex w-25 justify-content-between">
+                  <div className="d-flex flex-column">
+                    <h6>Role:</h6>
+                    <h6>Batch:</h6>
+                    <h6>Branch:</h6>
+                  </div>
+                  <div className="d-flex flex-column">
+                    <h6>{e.jobDesignation}</h6>
+                    <h6>{displayElements(e.batch)}</h6>
+                    <h6>{displayElements(e.stream)}</h6>
+                  </div>
+                </div>
+                <div className="d-flex w-25 justify-content-between">
+                  <div className="d-flex flex-column">
+                    <h6>Course:</h6>
+                    <h6>CTC:</h6>
+                    <h6>Mode:</h6>
+                  </div>
+                  <div className="d-flex flex-column mx-2">
+                    <h6>{displayElements(e.course)}</h6>
+                    <h6>{e.ctc}</h6>
+                    <h6>{e.mode}</h6>
+                  </div>
+                </div>
+                <button className="btn btn-success" onClick={updateDrive(e)}>View Details</button>
+              </div>
+            </div>
