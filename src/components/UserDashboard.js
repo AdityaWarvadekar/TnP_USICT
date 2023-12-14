@@ -37,7 +37,7 @@ const UserDashboard = () => {
 
   return (
     <>
-      <div className="d-flex">
+      <div className="d-flex py-5">
         <div className="dashboardContainer">
           <ul>
             <li className="dashboardElements">
@@ -63,7 +63,7 @@ const UserDashboard = () => {
             </li>
           </ul>
         </div>
-        <div className="dashboardDisplay"><h1>Welcome {(loginType==="company")? user.pocName : user.name } !</h1>{showDashboard()}</div>
+        <div className="dashboardDisplay py-5"><h1>Welcome {(loginType==="company")? user.pocName : user.name } !</h1>{showDashboard()}</div>
       </div>
     </>
   );

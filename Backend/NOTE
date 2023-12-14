@@ -65,3 +65,32 @@ OR do something for the ref and modal
                 <button className="btn btn-success" onClick={updateDrive(e)}>View Details</button>
               </div>
             </div>
+
+
+
+
+            const response = await fetch(`${host}/api/student/addAcademicDetails`, {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+                "auth-token": localStorage.getItem("token")
+              },
+              body: JSON.stringify({
+                percentage10: acadDetails.percentage10,
+                percentage12: acadDetails.percentage12,
+                gradCGPA: acadDetails.gradCGPA,
+                resume: filePath,
+                gender: acadDetails.gender
+              })
+            });
+            const json = await response.json();
+            console.log(json);
+            if (json.success) {
+              window.alert("Details added Successfully");
+              close.current.click();
+              navigate("/userDashboard");
+            }
+            else {
+              const error = json.error;
+              window.alert(error[0].path + " : " + error[0].msg);
+            }

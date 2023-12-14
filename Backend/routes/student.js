@@ -16,7 +16,7 @@ router.get("/scheduledDrives", fetchStudent, async (req, res) => {
     console.log("DRIVES SCHEDULED: ");
     const userId = req.student.id;
     const student = await Student.findById(userId);
-    const drives = await JAF.find({batch: student.yop}, { _id: 0 });
+    const drives = await JAF.find({batch: student.yop, stream: student.branch}, { _id: 0 });
     // console.log(drives);
     res.send(drives);
   }
