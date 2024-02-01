@@ -36,6 +36,12 @@ function Signup() {
     cnfrmpwd: "",
   });
 
+  const [show, setShow] = useState(false); //For Show password button
+
+  const [loading, setLoading] = useState(false);
+
+  
+
   const onChangeStudent = (e) => {
     setStudentCredentials({
       ...studentCredentials,
@@ -82,11 +88,11 @@ function Signup() {
           alert(json.error);
           console.log(json.error);
         }
-        else{
-        const error = json.errors[0];
-        console.log(error);
-        alert(error.path + " : " + error.msg);
-      }
+        else {
+          const error = json.errors[0];
+          console.log(error);
+          alert(error.path + " : " + error.msg);
+        }
       }
     }
   };
@@ -256,8 +262,8 @@ function Signup() {
               </div>
               <div className="form-group my-3">
                 <label htmlFor="pword">Password</label>
-                <input
-                  type="password"
+                <div className="d-flex align-items-center"><input
+                  type={show ? "text" : "password"}
                   className="form-control my-3 "
                   id="pword"
                   placeholder="Password"
@@ -265,11 +271,13 @@ function Signup() {
                   value={studentCredentials.password}
                   onChange={onChangeStudent}
                 />
+                  <p className=" btn h-50 m-2" onClick={()=>{setShow(!show)}}><i class="fa-solid fa-eye"></i></p></div>
+
               </div>
               <div className="form-group my-3">
                 <label htmlFor="cnfrmpword">Confirm Password</label>
                 <input
-                  type="password"
+      
                   className="form-control my-3 "
                   id="cnfrmpword"
                   placeholder="Confirm Password"

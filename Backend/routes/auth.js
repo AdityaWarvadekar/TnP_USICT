@@ -241,10 +241,48 @@ router.post("/updateCompanyDetails", [body("email", "Enter a valid email!").isEm
         res.json({success: true});
     }catch(error){
         console.log(error);
-        return res.status(500).json({sucess: false, error: "Internal Server  ccdError"});
+        return res.status(500).json({success: false, error: "Internal Server  ccdError"});
     }
 }
     )
+
+//Update Student and Company Pics
+
+router.post("/updateStudentPic", fetchStudent, [body("pic", "Invalid Path").exists()], async(req, res)=>{
+    const errors = validationResult(req);
+    if(!errors.isEmpty())
+        return res.status(400).json({success: false, error: errors.array()})
+    try{
+        const userId = req.student.id;
+        const pic = req.body.pic;
+        const student = await Student.findById(userId);
+        if(!student)
+            return res.status(404).json({success: false, error: "Student does not exist"});
+        const update = await Student.findByIdAndUpdate(userId, {pic: pic});
+        res.json({sucess: true});
+    }catch(error){
+        console.log(error);
+        res.status(500).json({success: false, error: "Internal Server Error xAuPicSt"});
+    }
+})
+
+router.post("/updateCompanyPic", fetchCompany, [body("pic", "Invalid Path").exists()], async(req, res)=>{
+    const errors = validationResult(req);
+    if(!errors.isEmpty())
+        return res.status(400).json({success: false, error: errors.array()})
+    try{
+        const userId = res.conpany.id;
+        const company = await Company.findById(userId);
+        const pic = req.body.pic;
+        if(!company)
+            return res.status(404).json({success: false, error: "Company does not exist"});
+        const update = await Company.findByIdAndUpdate(userId, {pic: pic});
+        res.json({success: true});
+    }catch(error){
+        console.log(error);
+        res.status(500).json({success: false, error: "Internal Server Error xAuPicCom"});
+    }
+})
 
 
 module.exports = router;

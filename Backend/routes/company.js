@@ -97,7 +97,7 @@ router.post("/scheduleDrive", fetchCompany, [
 router.get("/getPutObjectUrl", async(req, res)=>{
     const filePath = req.header("filePath");
     const contentType = req.header("contentType");
-    console.log("FilePath: ", filePath, contentType);
+    console.log("FilePath: "+ filePath+ "ContentType: " + contentType);
     try{
     const url = await generatePutObjectUrl(filePath, contentType);
     res.status(200).json({success: true, url: url});

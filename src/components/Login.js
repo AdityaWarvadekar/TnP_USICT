@@ -36,6 +36,8 @@ function Login(props) {
         else alert("INVALID");
     }
 
+   const [show, setShow] = useState(false); //for hide/show password
+    
   // window.onunload = ()=>{
   //   localStorage.removeItem("token");
   //   return;
@@ -68,8 +70,9 @@ GoToTop();
           </div>
           <div className="form-group my-3">
             <label htmlFor="exampleInputPassword1">Password</label>
+            <div className='d-flex align-items-center'>
             <input
-              type="password"
+              type={show? "text" : "password"}
               className="form-control my-3"
               id="exampleInputPassword1"
               placeholder="Password"
@@ -77,6 +80,9 @@ GoToTop();
               value={credentials.password}
               onChange={onChange}
             />
+            <p className='btn m-2' onClick={()=>{setShow(!show)}}><i class="fa-solid fa-eye"></i></p>
+            </div>
+            
           </div>
           <button type="submit" className="btn btn-primary">
             Login

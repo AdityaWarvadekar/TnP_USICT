@@ -161,6 +161,7 @@ const Profile = () => {
   }, []);
 
 
+
   //UPLOAD
 
   const [File, setFile] = useState(null);
@@ -169,9 +170,9 @@ const Profile = () => {
   const handleUploadChange = async (e) => {
     if (e.target.files[0] && e.target.files[0].type==="application/pdf") {
       setFile(e.target.files[0]);
-      setFilePath(`student/${profile.yop}/${profile.course}/${profile.branch}/resume_${profile.enrollment}_${profile.name}.pdf`);
+      setFilePath(`student/${profile.yop}/${profile.course}/${profile.branch}/${profile.name}/resume_${profile.enrollment}_${profile.name}.pdf`);
     } else {
-      alert("Invalid File Type");
+      alert("Only .pdf allowed!");
       setFilePath(null);
       setPutUrl(null);
       setFile(null);
@@ -186,7 +187,7 @@ const Profile = () => {
       method: "GET",
       headers: {
         filePath: filePath,
-        contentType: "multipart/form-data"
+        contentType: "application/pdf"
       }
     });
     const json = await response.json();
@@ -230,6 +231,124 @@ useEffect(()=>{
 }, [profile])
 
 
+
+//PIC UPLOAD
+
+
+
+const [Pic, setPic] = useState(null);
+const [picPath, setPicPath] = useState(null);
+const [picUrl, setPicUrl] = useState(null);
+
+const generatePicPutUrl = async ()=>{
+  const response = await fetch(`${host}/api/company/getPutObjectUrl`, {
+    method: "GET",
+    headers: {
+      filePath: picPath,
+      contentType: "image/jpeg"
+    }
+  });
+  const json = await response.json();
+  
+  if (json.success){
+    // console.log("repsonse: ", json.url);
+    setPicUrl(json.url);
+    // alert("picurl: ", json.url);
+    // console.log("picUrl: ", picUrl);
+  }
+  else {
+    setPicUrl(null);
+    console.log(json.error);
+  }
+}
+const [loading, setLoading] = useState(false);
+
+const handlePicChange = async (e)=>{
+  if (e.target.files[0] && e.target.files[0].type==="image/jpeg"){
+    setPic(e.target.files[0]);
+    setPicPath(`student/${profile.yop}/${profile.course}/${profile.branch}/${profile.name}/profile_${profile.enrollment}_${profile.name}.jpg`);
+  } 
+  else {
+    alert("Invalid File Type (only jpeg)");
+    setPicPath(null);
+    setPic(null);
+    setPicUrl(null);
+    console.log("HATTATATATTATTTTT in Image .js");
+    return;
+  }
+}
+
+useEffect(() => {
+  if (picPath) {
+    // alert("filePath going to effect gen put:", picPath);
+    generatePicPutUrl();
+  }
+}, [picPath]);
+
+
+const picUpload = async (e)=>{
+  // alert("uploading at: ",picPath);
+  setLoading(true);
+  let uploadStatus = 404;
+    e.preventDefault();
+    if (localStorage.getItem("session") === "false") {
+      alert("Session Expired! Please Login again");
+      setLoading(false);
+      navigate("/login");
+    }
+    else {
+      try {
+        // alert(putUrl);
+        const uploadResponse = await fetch(`${picUrl}`, {
+          method: "PUT",
+          headers: {
+            "content-type": "image/jpeg"
+          },
+          body: Pic
+        });
+
+        uploadStatus = uploadResponse.status;
+        console.log("response", uploadStatus);
+        // alert(uploadStatus);
+      } catch (error) {
+        console.log("EROOORRRRR:", error);
+        console.log("Internal Server Error. Please Refresh!");
+      }
+    }
+    if(uploadStatus===200){
+      setUploaded(true);
+      const updateUrl = loginType === "student" ?
+      `${host}/api/auth/updateStudentPic` :
+      `${host}/api/auth/updateCompanyPic`;
+
+      const response = await fetch(updateUrl, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "auth-token": localStorage.getItem("token")
+        },
+        body: JSON.stringify({
+          pic: picPath,
+        })
+      });
+      const json = await response.json();
+      console.log(json);
+      if (json.success) {
+        window.alert("Profile Pic Uploaded Successfully");
+        navigate("/userDashboard");
+        getProfile();
+      }
+      else {
+        const error = json.error;
+        alert(error);
+      }
+
+    }
+    else
+      alert("No file attached");
+    // setUploaded(false);
+    setLoading(false);
+}
 
   const academicModal = () => {
     return (<>
@@ -287,6 +406,7 @@ useEffect(()=>{
     )
   }
 
+const [uploaded, setUploaded] = useState(false);
 
   const profileModal = () => {
     // console.log(profile.name);
@@ -306,7 +426,7 @@ useEffect(()=>{
                 </button>
               </div>
               <div class="modal-body p-5">
-                <form onSubmit={updateProfile}>
+                <form onSubmit={()=>{updateProfile();}}>
 
                   <div class="form-row d-flex">
 
@@ -320,6 +440,13 @@ useEffect(()=>{
                     <div class="col w-50 mx-2">
                       <label>Password: </label>
                       <input type="password" class="form-control my-2" placeholder={pword} name="pword" value={pword} onChange={onChangeProfile} />
+                    </div>
+                  </div>
+                  <div class="form-row d-flex">
+                    <div className="col w-50 mx-2">
+                    <label>Profile Pic: </label>
+                    <input type="file" class="form-control my-2" onChange={handlePicChange}/>
+                    <button className={`btn btn-success ${uploaded? "disabled": ""}`} onClick={picUpload}>{uploaded? <i class="fa-solid fa-check"></i>:<i class="fa-solid fa-upload"></i>}</button>
                     </div>
                   </div>
                   <div class="modal-footer" style={{ marginTop: "10vmin" }}>
@@ -349,7 +476,10 @@ useEffect(()=>{
         <h4 className="my-4">Your Profile: <span><button className="btn btn-success mx-3" onClick={() => { console.log("AAUUUUU"); profileRef.current.click(); }}><i class="fa-solid fa-pen-to-square"></i></button></span></h4>
         <div className="profileContainer">
           <div className="d-flex justify-content-between align-items-center w-100 p-5">
-            <div className="d-flex w-50 justify-content-evenly px-5">
+            {/* <div className="w-25 bg-primary"> */}
+              <img className="w-25 rounded-3" style={{height: "25vmin"}} src={profile.pic}/>
+              {/* </div> */}
+            <div className="d-flex w-50 justify-content-evenly px-3">
               <div className="d-flex flex-column head">
                 <h6>Name:</h6>
                 <h6>Enrollment:</h6>

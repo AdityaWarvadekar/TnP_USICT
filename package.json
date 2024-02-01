@@ -10,6 +10,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "child_process": "^1.0.2",
+    "cloudinary": "^1.41.3",
     "concurrently": "^8.2.0",
     "gh-pages": "^5.0.0",
     "google-map-react": "^2.2.0",
